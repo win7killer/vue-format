@@ -3,10 +3,13 @@
  * @author fe_bean
  */
 
-const vscode = require('vscode');
+const {window, Position, Range, workspace} = require('vscode');
 const beautify = require('js-beautify');
-const window = vscode.window;
-const TextEdit = vscode.TextEdit;
+
+// let terminal = window.createTerminal({name: "xmake"});
+// terminal.show(true);
+// terminal.sendText("xmake");
+
 let editor;
 
 let methods = {
@@ -18,6 +21,9 @@ let methods = {
         editor = window.activeTextEditor;
         if (!editor) throw new Error('no active editor');
         this.doc = editor.document;
+        // let conf = workspace.getConfiguration('vue-format');
+        // let ss = typeof conf.config + '';
+        // console();
         this.lineCount = this.doc.lineCount;
         this.text = this.doc.getText();
         this.newText = '';
@@ -48,12 +54,13 @@ let methods = {
         if (!text) {
             throw new Error(text);
         }
+        let scoped = /<style[^>]*\s+scoped/.test(text) ? ' scoped' : '';
         let lang = this.getLang(text);
         text = text.replace(/<style[^>]*>([\w\W]+)<\/style>/, '$1');
         let str = beautify.css(text, {
             indent_size: 4
         });
-        return `<style${lang}>\n${str}\n</style>\n\n`;
+        return `<style${lang}${scoped}>\n${str}\n</style>\n\n`;
     },
     beautyJs(text) {
         if (!text) {
@@ -74,14 +81,20 @@ let methods = {
         return lang && ` lang="${lang.pop()}"` || '';
     },
     writeFile() {
-        let start = new vscode.Position(0, 0);
-        let end = new vscode.Position(this.lineCount, 0);
-        let range = new vscode.Range(start, end);
+        let start = new Position(0, 0);
+        let end = new Position(this.lineCount, 0);
+        let range = new Range(start, end);
         editor.edit((editBuilder, error) => {
-            error && vscode.window.showErrorMessage(error);
+            error && window.showErrorMessage(error);
             editBuilder.replace(range, this.newText);
         });
     },
+    config() {
+        const configuration = workspace.getConfiguration('vue-format');
+        return {
+
+        };
+    }
 };
 
 module.exports = methods;

@@ -1,0 +1,9 @@
+{
+    "indent_size": 4,
+    "indent_char": " ",
+    "space_after_anon_function": true,
+    "keep_array_indentation": true,
+    "css": {},
+    "js": {},
+    "html": {}
+}

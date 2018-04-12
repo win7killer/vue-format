@@ -19,7 +19,34 @@
         "url": "https://github.com/win7killer/vue-format"
     },
     "main": "./extension",
+
     "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "vue-format",
+            "properties": {
+                "vue-format.config": {
+                    "type": "object",
+                    "default": {
+                        "indent_size": 4,
+                        "indent_char": " ",
+                        "indent_with_tabs": false,
+                        "space_after_anon_function": true,
+                        "css": {
+                            "indent_size": 4
+                        },
+                        "js": {
+                            "indent_size": 4,
+                            "brace-style": "collapse"
+                        },
+                        "html": {
+                            "indent_size": 4
+                        }
+                    },
+                    "description": "The config use some js-beautify options, see js-beautify.（使用js-beautify配置项，详情查看js-beautify）"
+                }
+            }
+        },
         "commands": [
             {
                 "when": "resourceLangId == vue",
