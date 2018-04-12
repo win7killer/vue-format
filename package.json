@@ -15,12 +15,18 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [
-            {
+        "commands": [{
+            "when": "resourceLangId == vue",
+            "command": "extension.vueFormat",
+            "title": "Vue Format"
+        }],
+        "menus": {
+            "editor/context": [{
+                "when": "resourceLangId == vue",
                 "command": "extension.vueFormat",
-                "title": "VueFormat"
-            }
-        ]
+                "group": "navigation"
+            }]
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",

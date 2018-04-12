@@ -65,6 +65,9 @@ let methods = {
             keep_array_indentation: true,
             brace_style: 'end-expand'
         });
+
+
+
         return `<script${lang}>\n${str}\n</script>\n\n`;
     },
     getLang(text) {
