@@ -31,6 +31,7 @@ let methods = {
         this.newText += this.beautyHtml(htmlText);
         this.newText += this.beautyJs(jsText);
         this.newText += this.beautyCss(cssText);
+        this.newText = this.newText.replace(/(\n)+$/, '\n');
     },
     beautyHtml(text) {
         if (!text) {
