@@ -2,11 +2,12 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.22.0"
     },
+    "icon": "images/logo.png",
     "categories": [
         "Other"
     ],

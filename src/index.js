@@ -4,10 +4,10 @@
  */
 
 const vscode = require('vscode');
+const beautify = require('js-beautify');
 const window = vscode.window;
 const TextEdit = vscode.TextEdit;
-const editor = window.activeTextEditor;
-const beautify = require('js-beautify');
+let editor;
 
 let methods = {
     doc: null,
@@ -15,6 +15,7 @@ let methods = {
     newText: '',
     lineCount: 1,
     init() {
+        editor = window.activeTextEditor;
         if (!editor) throw new Error('no active editor');
         this.doc = editor.document;
         this.lineCount = this.doc.lineCount;
@@ -78,7 +79,8 @@ let methods = {
         let start = new vscode.Position(0, 0);
         let end = new vscode.Position(this.lineCount, 0);
         let range = new vscode.Range(start, end);
-        editor.edit((editBuilder) => {
+        editor.edit((editBuilder, error) => {
+            error && vscode.window.showErrorMessage(error);
             editBuilder.replace(range, this.newText);
         });
     },
