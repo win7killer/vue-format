@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.22.0"

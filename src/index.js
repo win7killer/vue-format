@@ -64,11 +64,8 @@ let methods = {
         let str = beautify.js(text, {
             indent_size: 4,
             space_after_anon_function: true,
-            keep_array_indentation: true,
-            brace_style: 'end-expand'
+            keep_array_indentation: true
         });
-
-
 
         return `<script${lang}>\n${str}\n</script>\n\n`;
     },
