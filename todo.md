@@ -1,3 +1,1 @@
-- fix "loss style tag's scoped"
-- add config file
-- support the pug(jade) template
+none
