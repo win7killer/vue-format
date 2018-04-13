@@ -1,9 +1,15 @@
 {
-    "indent_size": 4,
-    "indent_char": " ",
-    "space_after_anon_function": true,
-    "keep_array_indentation": true,
-    "css": {},
-    "js": {},
-    "html": {}
+    "js-beautify": {
+        "indent_size": "editor.tabSize",
+        "indent_char": " ",
+        "indent_with_tabs": false,
+        "brace-style": "collapse",
+        "space_after_anon_function": true,
+        "css": {},
+        "js": {},
+        "html": {}
+    },
+    "pug-beautify": {
+        "fill_tab": false
+    }
 }

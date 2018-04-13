@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.22.0"
@@ -19,49 +19,45 @@
         "url": "https://github.com/win7killer/vue-format"
     },
     "main": "./extension",
-
     "contributes": {
         "configuration": {
             "type": "object",
             "title": "vue-format",
             "properties": {
-                "vue-format.config": {
+                "vue-format.js-beautify": {
                     "type": "object",
                     "default": {
-                        "indent_size": 4,
+                        "indent_size": "editor.tabSize",
                         "indent_char": " ",
                         "indent_with_tabs": false,
+                        "brace-style": "collapse",
                         "space_after_anon_function": true,
-                        "css": {
-                            "indent_size": 4
-                        },
-                        "js": {
-                            "indent_size": 4,
-                            "brace-style": "collapse"
-                        },
-                        "html": {
-                            "indent_size": 4
-                        }
+                        "css": {},
+                        "js": {},
+                        "html": {}
                     },
                     "description": "The config use some js-beautify options, see js-beautify.（使用js-beautify配置项，详情查看js-beautify）"
+                },
+                "vue-format.pug-beautify": {
+                    "type": "object",
+                    "default": {
+                        "fill_tab": false
+                    },
+                    "description": "The config use some pug-beautify options, see pug-beautify.（使用pug-beautify配置项，详情查看pug-beautify）"
                 }
             }
         },
-        "commands": [
-            {
+        "commands": [{
+            "when": "resourceLangId == vue",
+            "command": "extension.vueFormat",
+            "title": "Vue Format"
+        }],
+        "menus": {
+            "editor/context": [{
                 "when": "resourceLangId == vue",
                 "command": "extension.vueFormat",
-                "title": "Vue Format"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "when": "resourceLangId == vue",
-                    "command": "extension.vueFormat",
-                    "group": "navigation"
-                }
-            ]
+                "group": "navigation"
+            }]
         }
     },
     "scripts": {
@@ -76,6 +72,7 @@
         "@types/mocha": "^2.2.42"
     },
     "dependencies": {
-        "js-beautify": "^1.7.5"
+        "js-beautify": "^1.7.5",
+        "pug-beautify": "^0.1.1"
     }
 }

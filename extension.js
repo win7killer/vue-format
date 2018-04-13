@@ -7,7 +7,13 @@ const formatInit = require('./src');
 function activate(context) {
     // 注册命令，该命令和package.json中命令一致
     let disposable = vscode.commands.registerCommand('extension.vueFormat', function () {
-        formatInit.init();
+        let acEditor = vscode.window.activeTextEditor;
+
+        if (acEditor && acEditor.document.languageId === 'vue') {
+            formatInit.init();
+        } else {
+            vscode.window.showInformationMessage('It‘s not a .vue file');
+        }
         // vscode.window.showInformationMessage('vue format now');
     });
 
