@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.22.0"
@@ -47,17 +47,21 @@
                 }
             }
         },
-        "commands": [{
-            "when": "resourceLangId == vue",
-            "command": "extension.vueFormat",
-            "title": "Vue Format"
-        }],
-        "menus": {
-            "editor/context": [{
+        "commands": [
+            {
                 "when": "resourceLangId == vue",
                 "command": "extension.vueFormat",
-                "group": "navigation"
-            }]
+                "title": "Vue Format"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "resourceLangId == vue",
+                    "command": "extension.vueFormat",
+                    "group": "navigation"
+                }
+            ]
         }
     },
     "scripts": {
