@@ -12,6 +12,16 @@ const beautify = require('js-beautify');
 const pugBeautify = require('pug-beautify');
 let defaultConf = require('../js-beautify.conf.json');
 let editor;
+let htmlUnFormat = [
+    'a', 'abbr', 'area', 'audio', 'b', 'bdi', 'bdo', 'br', 'button', 'canvas', 'cite',
+    'code', 'data', 'datalist', 'del', 'dfn', 'em', 'embed', 'i', 'iframe', 'img',
+    'input', 'ins', 'kbd', 'keygen', 'label', 'map', 'mark', 'math', 'meter', 'noscript',
+    'object', 'output', 'progress', 'q', 'ruby', 's', 'samp', /* 'script', */ 'select', 'small',
+    'span', 'strong', 'sub', 'sup', 'svg', 'template', 'textarea', 'time', 'u', 'var',
+    'video', 'wbr', 'text',
+    // prexisting - not sure of full effect of removing, leaving in
+    'acronym', 'address', 'big', 'dt', 'ins', 'strike', 'tt',
+];
 
 let methods = {
     doc: null,
@@ -42,29 +52,46 @@ let methods = {
         this.writeFile();
     },
     splitContent(text) {
-        let htmlText = text.match(/[\w\W]+<\/template>\s?/);
+        let htmlText = text.match(/<template[\w\W]+<\/template>\s?/);
         let jsText = text.match(/<script[\w\W]+<\/script>\s?/);
         let cssText = text.match(/<style[\w\W]+<\/style>\s?/);
 
-        this.newText += htmlText ? this.beautyHtml(htmlText[0]) : '';
-        this.newText += jsText ? this.beautyJs(jsText[0]) : '';
-        this.newText += cssText ? this.beautyCss(cssText[0]) : '';
-        this.newText = this.newText.replace(/(\n)+$/, '\n');
+        text = htmlText ? text.replace(htmlText, this.beautyHtml(htmlText[0])) : text;
+        text = jsText ? text.replace(jsText, this.beautyJs(jsText[0])) : text;
+        text = cssText ? text.replace(cssText, this.beautyCss(cssText[0])) : text;
+
+        // this.newText += htmlText ? this.beautyHtml(htmlText[0]) : '';
+        // this.newText += jsText ? this.beautyJs(jsText[0]) : '';
+        // this.newText += cssText ? this.beautyCss(cssText[0]) : '';
+        this.newText = text.replace(/(\n|\t){3,}/g, '$1$1').trim() + '\n';
+    },
+    mergeFormatTag(arrUnFormat = [], arrForceFormat = []) {
+        arrForceFormat.forEach(item => {
+            let index = arrUnFormat.indexOf(item);
+            if (index > -1) {
+                arrUnFormat.splice(index, 1);
+            }
+        });
+        return arrUnFormat;
     },
     beautyHtml(text) {
+        let str = '';
+        let indentRoot = this.vueFormatConf['html_indent_root'] || false;
         let lang = this.getLang(text);
-        text = text.replace(/<template[^>]*>([\w\W]+)<\/template>/, '$1');
-        let tempConf = {};
-        let str = text;
+        let tempConf = {
+            unformatted: this.mergeFormatTag(htmlUnFormat, this.jsBeautifyConf.html.force_format)
+        };
+
+        text = indentRoot ? text : text.replace(/<template[^>]*>([\w\W]+)<\/template>/, '$1');
         if (/pug/.test(lang)) {
             str = pugBeautify(text, this.pugBeautifyConf)
-                .trim()
-                ;
+                .trim();
         } else {
-            tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.html);
+            tempConf = Object.assign(tempConf, this.jsBeautifyConf, this.jsBeautifyConf.html);
             str = beautify.html(text, tempConf);
         }
-        return `<template${lang}>\n${str}\n</template>\n\n`;
+
+        return indentRoot ? `${str}\n\n` : `<template${lang}>\n${str}\n</template>\n\n`;
     },
     beautyCss(text) {
         let scoped = /<style[^>]*\s+scoped/.test(text) ? ' scoped' : '';
@@ -99,6 +126,7 @@ let methods = {
         this.editorConf = Object.assign({}, workspace.getConfiguration('editor'));
         this.initDefaultJsBConf(this.jsBeautifyConf);
         let vueFormatConf = workspace.getConfiguration('vue-format');
+        this.vueFormatConf = vueFormatConf;
         if (!vueFormatConf) {
             return;
         }

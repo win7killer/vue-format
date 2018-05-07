@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.22.0"
@@ -24,6 +24,11 @@
             "type": "object",
             "title": "vue-format",
             "properties": {
+                "vue-format.html_indent_root": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If indent the root-tag in .vue's template(是否缩进vue组件template中的根节点)"
+                },
                 "vue-format.js-beautify": {
                     "type": "object",
                     "default": {
@@ -34,7 +39,10 @@
                         "space_after_anon_function": true,
                         "css": {},
                         "js": {},
-                        "html": {}
+                        "html": {
+                            "force_format": ["template"],
+                            "wrap_attributes": "force-expand-multiline"
+                        }
                     },
                     "description": "The config use some js-beautify options, see js-beautify.（使用js-beautify配置项，详情查看js-beautify）"
                 },

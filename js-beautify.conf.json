@@ -1,4 +1,5 @@
 {
+    "html_indent_root": false,
     "js-beautify": {
         "indent_size": "editor.tabSize",
         "indent_char": " ",
@@ -7,7 +8,10 @@
         "space_after_anon_function": true,
         "css": {},
         "js": {},
-        "html": {}
+        "html": {
+            "force_format": ["template"],
+            "wrap_attributes": "force-expand-multiline"
+        }
     },
     "pug-beautify": {
         "fill_tab": false

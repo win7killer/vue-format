@@ -3,7 +3,7 @@
 format single file with '.vue'.（格式化单组件“.vue”文件代码）
 
 ## Features
-![command](https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif)
+<img src="https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif" alt="command" width=600/>
 
 ## Requirements
 - js-beautify: [https://github.com/beautify-web/js-beautify](https://github.com/beautify-web/js-beautify)
@@ -15,6 +15,7 @@ format single file with '.vue'.（格式化单组件“.vue”文件代码）
 
 ```json
 {
+    "html_indent_root": false, // 是否缩进vue template中的根节点
     "js-beautify": {
         "indent_size": "editor.tabSize",
         "indent_char": " ",
@@ -23,7 +24,11 @@ format single file with '.vue'.（格式化单组件“.vue”文件代码）
         "space_after_anon_function": true,
         "css": {},
         "js": {},
-        "html": {}
+        "html": {
+            "force_format": ["template"],
+            // tag 的多个 attribute 换行展示 [auto|force-expand-multiline|force|force-aligned]
+            "wrap_attributes": "force-expand-multiline"
+        }
     },
     "pug-beautify": {
         "fill_tab": false
