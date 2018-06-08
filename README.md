@@ -1,7 +1,7 @@
 # vue-format README
 
 format single file with '.vue'.（格式化单组件“.vue”文件代码）
-
+> If you have some issue, just let me know https://github.com/win7killer/vue-format
 ## Features
 <img src="https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif" alt="command" width=600/>
 

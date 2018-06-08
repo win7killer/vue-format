@@ -19,3 +19,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - add the config of "indent_root" for html
 - add the config of "force_format" for html, make sure the "template" tag can be format normally
 - add the config of "html_indent_root"
+
+### 0.0.10
+- set engines version of vscode to ^1.2.0
