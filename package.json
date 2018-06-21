@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "A beautify extension for .vue file",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.2.0"
@@ -41,7 +41,7 @@
                         "js": {},
                         "html": {
                             "force_format": ["template"],
-                            "wrap_attributes": "force-expand-multiline"
+                            "wrap_attributes": "auto"
                         }
                     },
                     "description": "The config use some js-beautify options, see js-beautify.（使用js-beautify配置项，详情查看js-beautify）"

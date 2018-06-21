@@ -10,7 +10,7 @@
         "js": {},
         "html": {
             "force_format": ["template"],
-            "wrap_attributes": "force-expand-multiline"
+            "wrap_attributes": "auto"
         }
     },
     "pug-beautify": {

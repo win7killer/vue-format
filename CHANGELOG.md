@@ -11,7 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - support 'pug-template' for html lang
 
 ### 0.0.7
-- change README.d && CHANGELOG.md
+- change [README.md](https://github.com/win7killer/vue-format/blob/master/README.md) && [CHANGELOG.md](https://github.com/win7killer/vue-format/blob/master/CHANGELOG.md)
 - change zhe image for preview
 
 ### 0.0.9
@@ -22,3 +22,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 0.0.10
 - set engines version of vscode to ^1.2.0
+
+### 0.0.11
+- fix [issues#2](https://github.com/win7killer/vue-format/issues/2) 格式化自动在template script style之间加空行，即使原来已存在空行
+- fix [issues#1](https://github.com/win7killer/vue-format/issues/1) 修改默认配置中 “wrap_attributes” 为 “auto”, 临时解决标签多属性换行后，格式化错乱问题 。如果需要多数行换行，在配置中修改该属性为 “force-expand-multiline”

@@ -56,14 +56,11 @@ let methods = {
         let jsText = text.match(/<script[\w\W]+<\/script>\s?/);
         let cssText = text.match(/<style[\w\W]+<\/style>\s?/);
 
-        text = htmlText ? text.replace(htmlText, this.beautyHtml(htmlText[0])) : text;
-        text = jsText ? text.replace(jsText, this.beautyJs(jsText[0])) : text;
-        text = cssText ? text.replace(cssText, this.beautyCss(cssText[0])) : text;
+        text = htmlText ? text.replace(htmlText[0], this.beautyHtml(htmlText[0])) : text;
+        text = jsText ? text.replace(jsText[0], this.beautyJs(jsText[0])) : text;
+        text = cssText ? text.replace(cssText[0], this.beautyCss(cssText[0])) : text;
 
-        // this.newText += htmlText ? this.beautyHtml(htmlText[0]) : '';
-        // this.newText += jsText ? this.beautyJs(jsText[0]) : '';
-        // this.newText += cssText ? this.beautyCss(cssText[0]) : '';
-        this.newText = text.replace(/(\n|\t){3,}/g, '$1$1').trim() + '\n';
+        this.newText = text.replace(/(\n|\t|\r){3,}/g, '$1$1').trim() + '\n';
     },
     mergeFormatTag(arrUnFormat = [], arrForceFormat = []) {
         arrForceFormat.forEach(item => {
