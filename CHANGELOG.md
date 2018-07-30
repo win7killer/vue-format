@@ -26,3 +26,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 0.0.11
 - fix [issues#2](https://github.com/win7killer/vue-format/issues/2) 格式化自动在template script style之间加空行，即使原来已存在空行
 - fix [issues#1](https://github.com/win7killer/vue-format/issues/1) 修改默认配置中 “wrap_attributes” 为 “auto”, 临时解决标签多属性换行后，格式化错乱问题 。如果需要多数行换行，在配置中修改该属性为 “force-expand-multiline”
+
+### 0.0.12
+- 支持多 `style`、`script`标签格式化

@@ -11,6 +11,7 @@ const {
 const beautify = require('js-beautify');
 const pugBeautify = require('pug-beautify');
 let defaultConf = require('../js-beautify.conf.json');
+
 let editor;
 let htmlUnFormat = [
     'a', 'abbr', 'area', 'audio', 'b', 'bdi', 'bdo', 'br', 'button', 'canvas', 'cite',
@@ -56,9 +57,20 @@ let methods = {
         let jsText = text.match(/<script[\w\W]+<\/script>\s?/);
         let cssText = text.match(/<style[\w\W]+<\/style>\s?/);
 
+        let jsArr = jsText[0].split(/<\/script>\n*/);
+        let cssArr = cssText[0].split(/<\/style>\n*/);
+
         text = htmlText ? text.replace(htmlText[0], this.beautyHtml(htmlText[0])) : text;
-        text = jsText ? text.replace(jsText[0], this.beautyJs(jsText[0])) : text;
-        text = cssText ? text.replace(cssText[0], this.beautyCss(cssText[0])) : text;
+        // text = jsText ? text.replace(jsText[0], this.beautyJs(jsText[0])) : text;
+        // text = cssText ? text.replace(cssText[0], this.beautyCss(cssText[0])) : text;
+        jsArr.forEach(item => {
+            let str = item + '</script>';
+            text = item ? text.replace(str, this.beautyJs(str)) : text;
+        });
+        cssArr.forEach(item => {
+            let str = item + '</style>';
+            text = item ? text.replace(str, this.beautyCss(str)) : text;
+        });
 
         this.newText = text.replace(/(\n|\t|\r){3,}/g, '$1$1').trim() + '\n';
     },
@@ -99,11 +111,12 @@ let methods = {
         return `<style${lang}${scoped}>\n${str}\n</style>\n\n`;
     },
     beautyJs(text) {
+        let scoped = /<script[^>]*\s+scoped/.test(text) ? ' scoped' : '';
         let lang = this.getLang(text);
         text = text.replace(/<script[^>]*>([\w\W]+)<\/script>/, '$1');
         let tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.js);
         let str = beautify.js(text, tempConf);
-        return `<script${lang}>\n${str}\n</script>\n\n`;
+        return `<script${lang}${scoped}>\n${str}\n</script>\n\n`;
     },
     getLang(text) {
         let lang = text.match(/lang=(["'])([a-zA-Z\-\_]*)\1/, '$2');

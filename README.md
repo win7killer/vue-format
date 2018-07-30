@@ -36,4 +36,6 @@ format single file with '.vue'.（格式化单组件“.vue”文件代码）
 }
 
 ```
+### Change Log
+[CHANGELOG.md](./CHANGELOG.md)
 
