@@ -57,21 +57,23 @@ let methods = {
         let jsText = text.match(/<script[\w\W]+<\/script>\s?/);
         let cssText = text.match(/<style[\w\W]+<\/style>\s?/);
 
-        let jsArr = jsText[0].split(/<\/script>\n*/);
-        let cssArr = cssText[0].split(/<\/style>\n*/);
-
-        text = htmlText ? text.replace(htmlText[0], this.beautyHtml(htmlText[0])) : text;
-        // text = jsText ? text.replace(jsText[0], this.beautyJs(jsText[0])) : text;
-        // text = cssText ? text.replace(cssText[0], this.beautyCss(cssText[0])) : text;
-        jsArr.forEach(item => {
-            let str = item + '</script>';
-            text = item ? text.replace(str, this.beautyJs(str)) : text;
-        });
-        cssArr.forEach(item => {
-            let str = item + '</style>';
-            text = item ? text.replace(str, this.beautyCss(str)) : text;
-        });
-
+        if (htmlText) {
+            text = text.replace(htmlText[0], this.beautyHtml(htmlText[0]));
+        }
+        if (jsText) {
+            let jsArr = jsText[0].split(/<\/script>\n*/);
+            jsArr.forEach(item => {
+                let str = item + '</script>';
+                text = item ? text.replace(str, this.beautyJs(str)) : text;
+            });
+        }
+        if (cssText) {
+            let cssArr = cssText[0].split(/<\/style>\n*/);
+            cssArr.forEach(item => {
+                let str = item + '</style>';
+                text = item ? text.replace(str, this.beautyCss(str)) : text;
+            });
+        }
         this.newText = text.replace(/(\n|\t|\r){3,}/g, '$1$1').trim() + '\n';
     },
     mergeFormatTag(arrUnFormat = [], arrForceFormat = []) {
