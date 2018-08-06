@@ -2,10 +2,10 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "A beautify extension for .vue file",
-    "version": "0.0.13",
+    "version": "0.1.0",
     "publisher": "febean",
     "engines": {
-        "vscode": "^1.2.0"
+        "vscode": "^1.12.0"
     },
     "icon": "images/logo.png",
     "categories": [
@@ -29,6 +29,11 @@
                     "default": false,
                     "description": "If indent the root-tag in .vue's template(是否缩进vue组件template中的根节点)"
                 },
+                "vue-format.break_attr_limit": {
+                    "type": "number",
+                    "default": -1,
+                    "description": "Break attributes when tag's attributes.length > this number, no break when -1.(tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行)"
+                },
                 "vue-format.js-beautify": {
                     "type": "object",
                     "default": {
@@ -42,8 +47,7 @@
                         "html": {
                             "force_format": [
                                 "template"
-                            ],
-                            "wrap_attributes": "auto"
+                            ]
                         }
                     },
                     "description": "The config use some js-beautify options, see js-beautify.（使用js-beautify配置项，详情查看js-beautify）"
@@ -59,7 +63,7 @@
         },
         "commands": [
             {
-                "when": "resourceLangId == vue",
+                "when": "editorLangId == vue",
                 "command": "extension.vueFormat",
                 "title": "Vue Format"
             }
@@ -67,7 +71,7 @@
         "menus": {
             "editor/context": [
                 {
-                    "when": "resourceLangId == vue",
+                    "when": "editorLangId == vue",
                     "command": "extension.vueFormat",
                     "group": "navigation"
                 }

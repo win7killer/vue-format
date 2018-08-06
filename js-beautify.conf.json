@@ -1,5 +1,6 @@
 {
     "html_indent_root": false,
+    "break_attr_limit": -1,
     "js-beautify": {
         "indent_size": "editor.tabSize",
         "indent_char": " ",

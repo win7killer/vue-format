@@ -29,3 +29,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 0.0.13
 - 支持多 `style`、`script`标签格式化
+
+### 0.1.0
+- 命令执行环境判断由 resourceLangId 改为 editorLangId，支持非 ".vue" 文件直接更改右下角语言为vue
+- 自行尝试修复 [issues#1](https://github.com/win7killer/vue-format/issues/1) 中涉及到的 js-beauty 格式化强制换行问题
+- 暂时停用 js-beautify.html.wrap_attributes 配置项（有上一条更改决定）
+- 增加 break_attr_limit 配置项，当tag的属性数量大于这个值，则该tag所有属性强制换行；-1时强制不换行

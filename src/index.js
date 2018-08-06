@@ -10,6 +10,7 @@ const {
 } = require('vscode');
 const beautify = require('js-beautify');
 const pugBeautify = require('pug-beautify');
+const { breakTagAttr } = require('./plugins');
 let defaultConf = require('../js-beautify.conf.json');
 
 let editor;
@@ -99,9 +100,12 @@ let methods = {
                 .trim();
         } else {
             tempConf = Object.assign(tempConf, this.jsBeautifyConf, this.jsBeautifyConf.html);
+            delete tempConf.wrap_attributes;
             str = beautify.html(text, tempConf);
         }
-
+        if (+this.vueFormatConf.break_attr_limit > -1) {
+            str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit);
+        }
         return indentRoot ? `${str}\n\n` : `<template${lang}>\n${str}\n</template>\n\n`;
     },
     beautyCss(text) {
