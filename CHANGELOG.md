@@ -35,3 +35,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - 自行尝试修复 [issues#1](https://github.com/win7killer/vue-format/issues/1) 中涉及到的 js-beauty 格式化强制换行问题
 - 暂时停用 js-beautify.html.wrap_attributes 配置项（有上一条更改决定）
 - 增加 break_attr_limit 配置项，当tag的属性数量大于这个值，则该tag所有属性强制换行；-1时强制不换行
+
+### 0.1.1
+- hotfix 😭, 所属性换行后缩进空格数忽略了用户配置~~
