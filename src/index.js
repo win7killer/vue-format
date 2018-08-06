@@ -104,7 +104,9 @@ let methods = {
             str = beautify.html(text, tempConf);
         }
         if (+this.vueFormatConf.break_attr_limit > -1) {
-            str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit);
+            str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
+                indent_size: this.jsBeautifyConf.indent_size
+            });
         }
         return indentRoot ? `${str}\n\n` : `<template${lang}>\n${str}\n</template>\n\n`;
     },

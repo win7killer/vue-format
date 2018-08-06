@@ -4,10 +4,12 @@
  * @param {Number} breakLimitNum 多余这个数量的属性，才会断行
  */
 
-function breakTagAttr(str = '', breakLimitNum = 1) {
+function breakTagAttr(str = '', breakLimitNum = 1, opt = {}) {
     if (breakLimitNum === -1) {
         return str;
     }
+    let { indent_size } = opt;
+    let padIndent = ' '.repeat(indent_size);
     const TAG_REG = /[\n\r\t]*(\s*)\<[A-z\-\_0-9]+/;
     const TAG_END_REG = /\s*(>|\/>)/;
 
@@ -32,7 +34,7 @@ function breakTagAttr(str = '', breakLimitNum = 1) {
             if (matchRes.length > breakLimitNum) { // 一个属性强制断行，或者多属性
                 // 每个 attr 先 trim,然后加换行，空格
                 let newStr = tagContent.replace(ATTR_REG, (match, $1) => {
-                    return '\n' + indent + '    ' + $1.trim();
+                    return '\n' + indent + padIndent + $1.trim();
                 });
                 // tag 结束括号换行
                 newStr = newStr.replace(TAG_CLOSE_REG, '\n' + indent + '$1');
