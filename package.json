@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "A beautify extension for .vue file",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.12.0"
@@ -65,7 +65,7 @@
             {
                 "when": "editorLangId == vue",
                 "command": "extension.vueFormat",
-                "title": "Vue Format"
+                "title": "Vue-Format"
             }
         ],
         "menus": {
@@ -91,7 +91,7 @@
     },
     "dependencies": {
         "html-parse-stringify": "^1.0.2",
-        "js-beautify": "^1.7.5",
+        "js-beautify": "^1.8.4",
         "pug-beautify": "^0.1.1"
     }
 }

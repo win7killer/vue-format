@@ -38,3 +38,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 0.1.1
 - hotfix 😭, 所属性换行后缩进空格数忽略了用户配置~~
+
+### 0.1.2
+- fix [issues#5](https://github.com/win7killer/vue-format/issues/5) 修复 引入css、资源的格式化异常
+- 更新依赖 js-beautify 到1.8.4

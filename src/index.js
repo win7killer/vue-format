@@ -59,20 +59,28 @@ let methods = {
         let cssText = text.match(/<style[\w\W]+<\/style>\s?/);
 
         if (htmlText) {
-            text = text.replace(htmlText[0], this.beautyHtml(htmlText[0]));
+            text = text.replace(htmlText[0], this.beautyHtml(htmlText[0]) + '\n');
         }
         if (jsText) {
             let jsArr = jsText[0].split(/<\/script>\n*/);
-            jsArr.forEach(item => {
+            jsArr.forEach((item, index) => {
+                let pre = '';
+                if (index === 0) {
+                    pre = '\n';
+                }
                 let str = item + '</script>';
-                text = item ? text.replace(str, this.beautyJs(str)) : text;
+                text = item ? text.replace(str, pre + this.beautyJs(str)) : text;
             });
         }
         if (cssText) {
             let cssArr = cssText[0].split(/<\/style>\n*/);
-            cssArr.forEach(item => {
+            cssArr.forEach((item, index) => {
+                let pre = '';
+                if (index === 0) {
+                    pre = '\n';
+                }
                 let str = item + '</style>';
-                text = item ? text.replace(str, this.beautyCss(str)) : text;
+                text = item ? text.replace(str, pre + this.beautyCss(str)) : text;
             });
         }
         this.newText = text.replace(/(\n|\t|\r){3,}/g, '$1$1').trim() + '\n';
@@ -108,23 +116,33 @@ let methods = {
                 indent_size: this.jsBeautifyConf.indent_size
             });
         }
-        return indentRoot ? `${str}\n\n` : `<template${lang}>\n${str}\n</template>\n\n`;
+        return indentRoot ? `${str}\n` : `<template${lang}>\n${str}\n</template>\n`;
     },
     beautyCss(text) {
         let scoped = /<style[^>]*\s+scoped/.test(text) ? ' scoped' : '';
         let lang = this.getLang(text);
-        text = text.replace(/<style[^>]*>([\w\W]+)<\/style>/, '$1');
-        let tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.css);
-        let str = beautify.css(text, tempConf);
-        return `<style${lang}${scoped}>\n${str}\n</style>\n\n`;
+        let str = text;
+        text = text.replace(/<style[^>]*>([\w\W]*)<\/style>/, '$1');
+        if (text.trim()) {
+            let tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.css);
+            str = beautify.css(text, tempConf);
+            return `<style${lang}${scoped}>\n${str}\n</style>`;
+        } else {
+            return str;
+        }
     },
     beautyJs(text) {
         let scoped = /<script[^>]*\s+scoped/.test(text) ? ' scoped' : '';
         let lang = this.getLang(text);
-        text = text.replace(/<script[^>]*>([\w\W]+)<\/script>/, '$1');
-        let tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.js);
-        let str = beautify.js(text, tempConf);
-        return `<script${lang}${scoped}>\n${str}\n</script>\n\n`;
+        let str = text;
+        text = text.replace(/<script[^>]*>([\w\W]*)<\/script>/, '$1');
+        if (text.trim()) {
+            let tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.js);
+            str = beautify.js(text, tempConf);
+            return `<script${lang}${scoped}>\n${str}\n</script>`;
+        } else {
+            return str;
+        }
     },
     getLang(text) {
         let lang = text.match(/lang=(["'])([a-zA-Z\-\_]*)\1/, '$2');
