@@ -1,12 +1,12 @@
 # vue-format README
 
-Format single file with '.vue'.（格式化单组件“.vue”文件代码）
+Format single file with '.vue'
 > If you have some issue, just let me know https://github.com/win7killer/vue-format
 
 `Welcome to star && fork`
 
 ## Big Notice
-> 0.1.0 版本 尝试解决了 js-beauty 的标签换行导致缩进异常问题，如有问题，随时 issue
+> version 0.1.0 try to fix the indent error, because "js-beautify.html.wrap_attributes: "force-expand-multiline". If there are some error, issue at anytime please.
 
 ## Features
 <img src="https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif" alt="command" width=600/>
@@ -18,13 +18,13 @@ Format single file with '.vue'.（格式化单组件“.vue”文件代码）
 
 ## Extension Settings
 
-- 使用[js-beautify](https://github.com/beautify-web/js-beautify)配置 和 [pug-beautify](https://github.com/vingorius/pug-beautify)配置
-- indent_size 默认使用 editor.tabSize
+- Use [js-beautify](https://github.com/beautify-web/js-beautify)'s config 和 [pug-beautify](https://github.com/vingorius/pug-beautify)'s config
+- indent_size: default use the "editor.tabSize"
 
 ```json
 {
-    "html_indent_root": false, // 是否缩进vue template中的根节点
-    "break_attr_limit": -1, // tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行
+    "html_indent_root": false, // If need to indent the root tag of template in ".vue" file
+    "break_attr_limit": -1, // when attributes.length > the value，break attributes force; keep inline when -1.
     "js-beautify": {
         "indent_size": "editor.tabSize",
         "indent_char": " ",
@@ -48,7 +48,7 @@ Format single file with '.vue'.（格式化单组件“.vue”文件代码）
 |---|---|---|
 |vue-format.html_indent_root|false|false|
 |vue-format.break_attr_limit|2|-1|
-|vue-format.js-beautify|（参见上边设置）|（参见上边设置）
+|vue-format.js-beautify|(See the config at front)|(See the config at front)
 |vue-format.pug-beautify|{fill_tab: false}|{fill_tab: false}
 
 

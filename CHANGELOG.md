@@ -28,7 +28,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - fix [issues#1](https://github.com/win7killer/vue-format/issues/1) 修改默认配置中 “wrap_attributes” 为 “auto”, 临时解决标签多属性换行后，格式化错乱问题 。如果需要多数行换行，在配置中修改该属性为 “force-expand-multiline”
 
 ### 0.0.13
-- 支持多 `style`、`script`标签格式化
+- suport multiple `style`、`script` tags
 
 ### 0.1.0
 - 命令执行环境判断由 resourceLangId 改为 editorLangId，支持非 ".vue" 文件直接更改右下角语言为vue
@@ -37,8 +37,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - 增加 break_attr_limit 配置项，当tag的属性数量大于这个值，则该tag所有属性强制换行；-1时强制不换行
 
 ### 0.1.1
-- hotfix 😭, 所属性换行后缩进空格数忽略了用户配置~~
+- hotfix 😭, fix miss user config~~
 
 ### 0.1.2
-- fix [issues#5](https://github.com/win7killer/vue-format/issues/5) 修复 引入css、资源的格式化异常
-- 更新依赖 js-beautify 到1.8.4
+- fix [issues#5](https://github.com/win7killer/vue-format/issues/5) fix import css、resource unknown error
+- update js-beautify to1.8.4
+
+### 0.1.3
+- update js-beautify to1.8.8
+- [issues#6](https://github.com/win7killer/vue-format/issues/5) fix miss the "functional"
+- Add README_EN.md (渣渣英语，无力)

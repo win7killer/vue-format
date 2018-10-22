@@ -97,6 +97,7 @@ let methods = {
     beautyHtml(text) {
         let str = '';
         let indentRoot = this.vueFormatConf['html_indent_root'] || false;
+        let functional = /<template[^>]*\s+functional/.test(text) ? ' functional' : '';
         let lang = this.getLang(text);
         let tempConf = {
             unformatted: this.mergeFormatTag(htmlUnFormat, this.jsBeautifyConf.html.force_format)
@@ -116,7 +117,7 @@ let methods = {
                 indent_size: this.jsBeautifyConf.indent_size
             });
         }
-        return indentRoot ? `${str}\n` : `<template${lang}>\n${str}\n</template>\n`;
+        return indentRoot ? `${str}\n` : `<template${lang}${functional}>\n${str}\n</template>\n`;
     },
     beautyCss(text) {
         let scoped = /<style[^>]*\s+scoped/.test(text) ? ' scoped' : '';
