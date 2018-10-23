@@ -1,5 +1,8 @@
 # vue-format README
 
+- English: [./README_EN.md](./README_EN.md)
+- 中文: [./README.md](./README.md)
+
 Format single file with '.vue'
 > If you have some issue, just let me know https://github.com/win7killer/vue-format
 
