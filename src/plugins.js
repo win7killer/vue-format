@@ -8,8 +8,8 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {}) {
     if (breakLimitNum === -1) {
         return str;
     }
-    let { indent_size } = opt;
-    let padIndent = ' '.repeat(indent_size);
+    let { indentSize, attrEndWithGt = true } = opt;
+    let padIndent = ' '.repeat(indentSize);
     const TAG_REG = /[\n\r\t]*(\s*)\<[A-z\-\_0-9]+/;
     const TAG_END_REG = /\s*(>|\/>)/;
 
@@ -37,7 +37,7 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {}) {
                     return '\n' + indent + padIndent + $1.trim();
                 });
                 // tag 结束括号换行
-                newStr = newStr.replace(TAG_CLOSE_REG, '\n' + indent + '$1');
+                newStr = attrEndWithGt ? newStr : newStr.replace(TAG_CLOSE_REG, '\n' + indent + '$1');
                 // 替换整个字符串中的对应内容
                 str = str.replace(tagContent, newStr);
             }

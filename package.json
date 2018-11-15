@@ -29,10 +29,20 @@
                     "default": false,
                     "description": "If indent the root-tag in .vue's template(是否缩进vue组件template中的根节点)"
                 },
+                "vue-format.format_need": {
+                    "type": "array",
+                    "default": ["html", "js", "css"],
+                    "description": "List of format, default [\"html\", \"js\", \"css\"].（需要格式化的语言，默认[\"html\", \"js\", \"css\"]）"
+                },
                 "vue-format.break_attr_limit": {
                     "type": "number",
                     "default": -1,
-                    "description": "Break attributes when tag's attributes.length > this number, no break when -1.(tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行)"
+                    "description": "Break attributes when tag's attributes.length > this number, no break when -1. (tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行)"
+                },
+                "vue-format.attr_end_with_gt": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If end attrs width '>' when break_attr_limit.（当break_attr_limit时，attrs 后边是否跟随‘>’, 即是否不把标签的括号换行。依赖break_attr_limit > -1 时生效)"
                 },
                 "vue-format.js-beautify": {
                     "type": "object",

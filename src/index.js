@@ -10,8 +10,10 @@ const {
 } = require('vscode');
 const beautify = require('js-beautify');
 const pugBeautify = require('pug-beautify');
-const { breakTagAttr } = require('./plugins');
-let defaultConf = require('../js-beautify.conf.json');
+const {
+    breakTagAttr
+} = require('./plugins');
+let defaultConf = require('../js-beautify.conf');
 
 let editor;
 let htmlUnFormat = [
@@ -54,14 +56,16 @@ let methods = {
         this.writeFile();
     },
     splitContent(text) {
+        let formatNeed = this.vueFormatConf.format_need || ['html', 'js', 'css'];
+
         let htmlText = text.match(/<template[\w\W]+<\/template>\s?/);
         let jsText = text.match(/<script[\w\W]+<\/script>\s?/);
         let cssText = text.match(/<style[\w\W]+<\/style>\s?/);
 
-        if (htmlText) {
+        if (htmlText && formatNeed.includes('html')) {
             text = text.replace(htmlText[0], this.beautyHtml(htmlText[0]) + '\n');
         }
-        if (jsText) {
+        if (jsText && formatNeed.includes('js')) {
             let jsArr = jsText[0].split(/<\/script>\n*/);
             jsArr.forEach((item, index) => {
                 let pre = '';
@@ -72,7 +76,7 @@ let methods = {
                 text = item ? text.replace(str, pre + this.beautyJs(str)) : text;
             });
         }
-        if (cssText) {
+        if (cssText && formatNeed.includes('css')) {
             let cssArr = cssText[0].split(/<\/style>\n*/);
             cssArr.forEach((item, index) => {
                 let pre = '';
@@ -114,7 +118,8 @@ let methods = {
         }
         if (+this.vueFormatConf.break_attr_limit > -1) {
             str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
-                indent_size: this.jsBeautifyConf.indent_size
+                indentSize: this.jsBeautifyConf.indent_size,
+                attrEndWithGt: this.vueFormatConf.attr_end_with_gt,
             });
         }
         return indentRoot ? `${str}\n` : `<template${lang}${functional}>\n${str}\n</template>\n`;
