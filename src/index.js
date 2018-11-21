@@ -118,7 +118,7 @@ let methods = {
         }
         if (+this.vueFormatConf.break_attr_limit > -1) {
             str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
-                indentSize: this.jsBeautifyConf.indent_size,
+                indentSize: +this.jsBeautifyConf.indent_size,
                 attrEndWithGt: this.vueFormatConf.attr_end_with_gt,
             });
         }

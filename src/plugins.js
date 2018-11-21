@@ -4,11 +4,11 @@
  * @param {Number} breakLimitNum 多余这个数量的属性，才会断行
  */
 
-function breakTagAttr(str = '', breakLimitNum = 1, opt = {}) {
+function breakTagAttr(str = '', breakLimitNum = 1, opt = {indentSize: 4, attrEndWithGt: true}) {
     if (breakLimitNum === -1) {
         return str;
     }
-    let { indentSize, attrEndWithGt = true } = opt;
+    let { indentSize, attrEndWithGt } = opt;
     let padIndent = ' '.repeat(indentSize);
     const TAG_REG = /[\n\r\t]*(\s*)\<[A-z\-\_0-9]+/;
     const TAG_END_REG = /\s*(>|\/>)/;

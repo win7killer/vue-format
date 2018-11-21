@@ -47,3 +47,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - update js-beautify to1.8.8
 - [issues#6](https://github.com/win7killer/vue-format/issues/5) fix miss the "functional"
 - Add README_EN.md (渣渣英语，无力)
+
+### 0.1.4
+- [issues#9](https://github.com/win7killer/vue-format/issues/9)增加配置项 “format_need”，分开自由控制是否格式化html、css、js。默认值["html", "css", "js"]，数组项表示需要格式化的list
+- [issues#10](https://github.com/win7killer/vue-format/issues/10)增加配置项 “attr_end_with_gt”，控制标签 attrs 换行后，标签后括号是否跟随最后一个attr保持一行。默认为true。【需要break_attr_limit生效后该属性才有用】

@@ -4,9 +4,9 @@
 - 中文: [./README.md](./README.md)
 
 Format single file with '.vue'.（格式化单组件“.vue”文件代码）
-> If you have some issue, just let me know https://github.com/win7killer/vue-format
+> 如果你有问题或者需求，欢迎来提 issue。  https://github.com/win7killer/vue-format
 
-`Welcome to star && fork`
+> 你的 issue 就是我的原力.  `欢迎 STAR && FORK`
 
 ## Big Notice
 > 0.1.0 版本 尝试解决了 js-beauty 的标签换行导致缩进异常问题，如有问题，随时 issue
@@ -28,6 +28,8 @@ Format single file with '.vue'.（格式化单组件“.vue”文件代码）
 {
     "html_indent_root": false, // 是否缩进vue template中的根节点
     "break_attr_limit": -1, // tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行
+    "attr_end_with_gt": true, // break_attr_limit省生效时，tag的">"是否不换行，默认true
+    "format_need": ["html", "js", "css"], // vue单文件中需要格式化的语言，默认["html", "js", "css"]。从数组中删除你不希望格式化的语言
     "js-beautify": {
         "indent_size": "editor.tabSize",
         "indent_char": " ",
@@ -51,13 +53,14 @@ Format single file with '.vue'.（格式化单组件“.vue”文件代码）
 |---|---|---|
 |vue-format.html_indent_root|false|false|
 |vue-format.break_attr_limit|2|-1|
-|vue-format.js-beautify|（参见上边设置）|（参见上边设置）
+|vue-format.attr_end_with_gt|true|true|
+|vue-format.format_need|["html"]|["html", "js", "css"]
+|vue-format.js-beautify|(See the config at front)|(See the config at front)
 |vue-format.pug-beautify|{fill_tab: false}|{fill_tab: false}
 
 
-## Change Log
-U can see the change log in [CHANGELOG.md](./CHANGELOG.md)
+## Changelog
+U can see the changelog in [CHANGELOG.md](./CHANGELOG.md)
 
 ## Todo List
 Some things todo in [todo.md](./todo.md)
-

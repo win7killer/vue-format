@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "A beautify extension for .vue file",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "publisher": "febean",
     "engines": {
         "vscode": "^1.12.0"
