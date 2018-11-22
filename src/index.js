@@ -87,7 +87,7 @@ let methods = {
                 text = item ? text.replace(str, pre + this.beautyCss(str)) : text;
             });
         }
-        this.newText = text.replace(/(\n|\t|\r){3,}/g, '$1$1').trim() + '\n';
+        this.newText = text.replace(/(\n|\t|\r)\s*(\n|\t|\r){2,}/g, '$1$1').trim() + '\n';
     },
     mergeFormatTag(arrUnFormat = [], arrForceFormat = []) {
         arrForceFormat.forEach(item => {
@@ -120,6 +120,7 @@ let methods = {
             str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
                 indentSize: +this.jsBeautifyConf.indent_size,
                 attrEndWithGt: this.vueFormatConf.attr_end_with_gt,
+                tempConf: tempConf
             });
         }
         return indentRoot ? `${str}\n` : `<template${lang}${functional}>\n${str}\n</template>\n`;
