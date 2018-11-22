@@ -51,3 +51,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 0.1.4
 - [issues#9](https://github.com/win7killer/vue-format/issues/9)增加配置项 “format_need”，分开自由控制是否格式化html、css、js。默认值["html", "css", "js"]，数组项表示需要格式化的list
 - [issues#10](https://github.com/win7killer/vue-format/issues/10)增加配置项 “attr_end_with_gt”，控制标签 attrs 换行后，标签后括号是否跟随最后一个attr保持一行。默认为true。【需要break_attr_limit生效后该属性才有用】
+
+### 0.1.4.1
+- [issues#12](https://github.com/win7killer/vue-format/issues/12) 取消对 js-beautify 中 html.unformatted 标签的 属性断行【例如，span 标签，不在对其attrs 做断行处理，inline标签不作任何处理。如需格式化对应标签，可在 `vue-format.js-beautify.html.force_format` 中添加对应标签名，如“template”】
+- 优化 template 和 script && style 标签之间的换行存在空格时导致格式化变多行问题。
