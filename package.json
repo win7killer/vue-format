@@ -31,7 +31,11 @@
                 },
                 "vue-format.format_need": {
                     "type": "array",
-                    "default": ["html", "js", "css"],
+                    "default": [
+                        "html",
+                        "js",
+                        "css"
+                    ],
                     "description": "List of format, default [\"html\", \"js\", \"css\"].（需要格式化的语言，默认[\"html\", \"js\", \"css\"]）"
                 },
                 "vue-format.break_attr_limit": {
