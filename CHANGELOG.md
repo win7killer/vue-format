@@ -55,3 +55,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 0.1.5
 - [issues#12](https://github.com/win7killer/vue-format/issues/12) 取消对 js-beautify 中 html.unformatted 标签的 属性断行【例如，span 标签，不在对其attrs 做断行处理，inline标签不作任何处理。如需格式化对应标签，可在 `vue-format.js-beautify.html.force_format` 中添加对应标签名，如“template”】
 - 优化 template 和 script && style 标签之间的换行存在空格时导致格式化变多行问题。
+
+### 0.1.6
+- 修复 package-lock.json 中引用 event-stream 引起的安全警报。
