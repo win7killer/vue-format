@@ -3,7 +3,8 @@
 - English: [./README_EN.md](./README_EN.md)
 - 中文: [./README.md](./README.md)
 
-Format single file with '.vue'.（格式化单组件“.vue”文件代码）
+Format single file with '.vue' used in 'vscode' editor.（vscode 编辑器格式化插件，格式化单文件“.vue”文件代码）
+https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 > 如果你有问题或者需求，欢迎来提 issue。  https://github.com/win7killer/vue-format
 
 > 你的 issue 就是我的原力.  `欢迎 STAR && FORK`
