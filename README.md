@@ -25,7 +25,7 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 - 使用[js-beautify](https://github.com/beautify-web/js-beautify)配置 和 [pug-beautify](https://github.com/vingorius/pug-beautify)配置
 - indent_size 默认使用 editor.tabSize
 
-```json
+```jsonc
 {
     "html_indent_root": false, // 是否缩进vue template中的根节点
     "break_attr_limit": -1, // tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行

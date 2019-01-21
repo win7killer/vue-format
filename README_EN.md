@@ -26,7 +26,7 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 - Use [js-beautify](https://github.com/beautify-web/js-beautify)'s config 和 [pug-beautify](https://github.com/vingorius/pug-beautify)'s config
 - indent_size: default use the "editor.tabSize"
 
-```json
+```jsonc
 {
     "html_indent_root": false, // If need to indent the root tag of template in ".vue" file
     "break_attr_limit": -1, // when attributes.length > the value，break attributes force; keep inline when -1.
