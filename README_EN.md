@@ -23,7 +23,7 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 
 ## Extension Settings
 
-- Use [js-beautify](https://github.com/beautify-web/js-beautify)'s config 和 [pug-beautify](https://github.com/vingorius/pug-beautify)'s config
+- Use [js-beautify](https://github.com/beautify-web/js-beautify)'s config and [pug-beautify](https://github.com/vingorius/pug-beautify)'s config
 - indent_size: default use the "editor.tabSize"
 
 ```jsonc
