@@ -58,3 +58,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 0.1.6
 - 修复 package-lock.json 中引用 event-stream 引起的安全警报。
+
+### 0.1.7
+- 增加快捷键：
+  - win: alt+ctrl+p
+  - mac: cmd+ctrl+p
+- 更新 js-beautify 依赖至 1.10.0，可解决 [issues#3](https://github.com/win7killer/vue-format/issues/3)
+- 去除 force_format 配置项，因为无法修改 js-beautify 内对 inline 标签的不格式化处理，所以这个配置无法生效。
+- fix[issue#18](https://github.com/win7killer/vue-format/issues/18)
+- 修复 package-lock.json 的安全警报
+- 读取 js-beautify 中的 inline 标签 list，匹配的 tag 将不会进行 attrs 换行

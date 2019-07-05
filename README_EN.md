@@ -20,6 +20,9 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 - js-beautify: [https://github.com/beautify-web/js-beautify](https://github.com/beautify-web/js-beautify)
 - pug-beautify: [https://github.com/vingorius/pug-beautify](https://github.com/vingorius/pug-beautify)
 
+## Keyboard Shortcuts
+- mac: `cmd+ctrl+p`
+- win: `alt+ctrl+p`
 
 ## Extension Settings
 
@@ -41,7 +44,8 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
         "css": {},
         "js": {},
         "html": {
-            "force_format": ["template"],
+            // "force_format": ["template"],
+            "wrap_attributes": "auto"
         }
     },
     "pug-beautify": {

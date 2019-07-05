@@ -9,13 +9,13 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {indentSize: 4, attrEnd
         return str;
     }
     let { indentSize, attrEndWithGt, tempConf } = opt;
-    let { unformatted } = tempConf;
+    let { unBreakAttrList } = tempConf;
     let padIndent = ' '.repeat(indentSize);
     const TAG_REG = /[\n\r\t]*(\s*)\<[A-z\-\_0-9]+/;
     const TAG_END_REG = /\s*(>|\/>)/;
     const TAG_NAME_REG = /\<([A-z][\w\-]*)/;
 
-    const ATTR_REG = /(\s(\:|\@)?[A-z0-9\-\_\.\:]+(=("[^"]+"|'[^']+'|`[^`]+`|[A-z0-9\_]+))?)/g;
+    const ATTR_REG = /(\s(\:|\@)?[A-z0-9\-\_\.\:]+(=("[^"]*"|'[^']+'|`[^`]+`|[A-z0-9\_]+))?)/g;
     const TAG_ATTR_REG = new RegExp(TAG_REG.source + ATTR_REG.source + '+' + TAG_END_REG.source, 'g');
     const TAG_CLOSE_REG = new RegExp(TAG_END_REG.source + '$');
 
@@ -29,7 +29,7 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {indentSize: 4, attrEnd
             // tag 内容
             let tagContent = res[0];
             let tagName = tagContent.match(TAG_NAME_REG);
-            if (unformatted.includes(tagName[1])) {
+            if (unBreakAttrList.includes(tagName[1])) {
                 // 行内标签
                 continue;
             }

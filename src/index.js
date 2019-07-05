@@ -14,18 +14,7 @@ const {
     breakTagAttr
 } = require('./plugins');
 let defaultConf = require('../js-beautify.conf');
-
 let editor;
-let htmlUnFormat = [
-    'a', 'abbr', 'area', 'audio', 'b', 'bdi', 'bdo', 'br', 'button', 'canvas', 'cite',
-    'code', 'data', 'datalist', 'del', 'dfn', 'em', 'embed', 'i', 'iframe', 'img',
-    'input', 'ins', 'kbd', 'keygen', 'label', 'map', 'mark', 'math', 'meter', 'noscript',
-    'object', 'output', 'progress', 'q', 'ruby', 's', 'samp', /* 'script', */ 'select', 'small',
-    'span', 'strong', 'sub', 'sup', 'svg', 'template', 'textarea', 'time', 'u', 'var',
-    'video', 'wbr', 'text',
-    // prexisting - not sure of full effect of removing, leaving in
-    'acronym', 'address', 'big', 'dt', 'ins', 'strike', 'tt',
-];
 
 let methods = {
     doc: null,
@@ -100,29 +89,28 @@ let methods = {
     },
     beautyHtml(text) {
         let str = '';
+        let defaultHtmlOptions = beautify.html.defaultOptions();
+        let htmlUnFormat = defaultHtmlOptions.inline;
         let indentRoot = this.vueFormatConf['html_indent_root'] || false;
         let functional = /<template[^>]*\s+functional/.test(text) ? ' functional' : '';
         let lang = this.getLang(text);
-        let tempConf = {
-            unformatted: this.mergeFormatTag(htmlUnFormat, this.jsBeautifyConf.html.force_format)
-        };
 
         text = indentRoot ? text : text.replace(/<template[^>]*>([\w\W]+)<\/template>/, '$1');
         if (/pug/.test(lang)) {
             str = pugBeautify(text, this.pugBeautifyConf)
                 .trim();
         } else {
-            tempConf = Object.assign(tempConf, this.jsBeautifyConf, this.jsBeautifyConf.html);
-            delete tempConf.wrap_attributes;
+            let tempConf = Object.assign(this.jsBeautifyConf, this.jsBeautifyConf.html);
             str = beautify.html(text, tempConf);
+            if (tempConf.wrap_attributes == 'auto' && +this.vueFormatConf.break_attr_limit > -1) {
+                str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
+                    indentSize: +this.jsBeautifyConf.indent_size,
+                    attrEndWithGt: this.vueFormatConf.attr_end_with_gt,
+                    tempConf: Object.assign(tempConf, {unBreakAttrList: htmlUnFormat })
+                });
+            }
         }
-        if (+this.vueFormatConf.break_attr_limit > -1) {
-            str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
-                indentSize: +this.jsBeautifyConf.indent_size,
-                attrEndWithGt: this.vueFormatConf.attr_end_with_gt,
-                tempConf: tempConf
-            });
-        }
+
         return indentRoot ? `${str}\n` : `<template${lang}${functional}>\n${str}\n</template>\n`;
     },
     beautyCss(text) {
