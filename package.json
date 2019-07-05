@@ -100,12 +100,12 @@
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
         "eslint": "^4.11.0",
-        "js-beautify": "^1.8.9",
         "typescript": "^2.6.1",
-        "vscode": "^1.1.6"
+        "vscode": "^1.1.35"
     },
     "dependencies": {
         "html-parse-stringify": "^1.0.2",
+        "js-beautify": "^1.10.0",
         "pug-beautify": "^0.1.1"
     }
 }
