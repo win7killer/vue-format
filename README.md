@@ -9,8 +9,7 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 
 > 你的 issue 就是我的原力.  `欢迎 STAR && FORK`
 
-## Big Notice
-> 0.1.0 版本 尝试解决了 js-beauty 的标签换行导致缩进异常问题，如有问题，随时 issue
+> 对 js-beautify 依赖很重，所以大部分都守 js-beautify 限制。理论上 js-beautify 的配置都可以适用。
 
 ## Features
 <img src="https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif" alt="command" width=600/>
