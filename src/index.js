@@ -13,7 +13,7 @@ const pugBeautify = require('pug-beautify');
 const {
     breakTagAttr
 } = require('./plugins');
-let defaultConf = require('../js-beautify.conf');
+let defaultConf = require('./js-beautify.conf');
 let editor;
 
 let methods = {
