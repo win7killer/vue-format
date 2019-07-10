@@ -1,4 +1,4 @@
-const { breakTagAttr } = require('./plugins');
+const { breakTagAttr } = require('../src/plugins');
 
 let str = `
 <template>

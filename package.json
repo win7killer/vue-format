@@ -2,8 +2,9 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "A beautify extension for .vue file",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "publisher": "febean",
+    "keyword": "vue vscode format js-beautify extension",
     "engines": {
         "vscode": "^1.12.0"
     },
@@ -75,23 +76,29 @@
                 }
             }
         },
-        "commands": [{
-            "when": "editorLangId == vue",
-            "command": "extension.vueFormat",
-            "title": "Vue-Format"
-        }],
-        "keybindings": [{
-            "key": "ctrl+alt+p",
-            "mac": "cmd+ctrl+p",
-            "when": "editorTextFocus && !editorReadonly && editorLangId == vue",
-            "command": "extension.vueFormat"
-        }],
-        "menus": {
-            "editor/context": [{
+        "commands": [
+            {
                 "when": "editorLangId == vue",
                 "command": "extension.vueFormat",
-                "group": "navigation"
-            }]
+                "title": "Vue-Format"
+            }
+        ],
+        "keybindings": [
+            {
+                "key": "ctrl+alt+p",
+                "mac": "cmd+ctrl+p",
+                "when": "editorTextFocus && !editorReadonly && editorLangId == vue",
+                "command": "extension.vueFormat"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorLangId == vue",
+                    "command": "extension.vueFormat",
+                    "group": "navigation"
+                }
+            ]
         }
     },
     "scripts": {
@@ -106,7 +113,6 @@
         "vscode": "^1.1.35"
     },
     "dependencies": {
-        "html-parse-stringify": "^1.0.2",
         "js-beautify": "^1.10.0",
         "pug-beautify": "^0.1.1"
     }

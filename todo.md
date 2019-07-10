@@ -1,4 +1,4 @@
 # todo list
 - 升级到 ts
-- 加入快捷键
--
+- rollup 或者 webpack 打包
+- 支持项目内配置
