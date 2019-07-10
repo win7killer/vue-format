@@ -9,7 +9,7 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 
 > Your issue is my force for this project.  `Welcome to STAR && FORK`
 
-> The dependence on js-beautify is very heavy, so most of them abide by the js-beautify restriction. In theory, the configuration of js-beautify can be applied.
+> Js-beautify is heavily dependent, so most of them are limited by js-beautify. In theory, the configuration of js-beautify can be applied.
 
 ## Features
 <img src="https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif" alt="command" width=600/>

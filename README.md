@@ -9,7 +9,7 @@ https://marketplace.visualstudio.com/items?itemName=febean.vue-format
 
 > 你的 issue 就是我的原力.  `欢迎 STAR && FORK`
 
-> 对 js-beautify 依赖很重，所以大部分都守 js-beautify 限制。理论上 js-beautify 的配置都可以适用。
+> 对 js-beautify 依赖很重，所以大部分都受 js-beautify 限制。理论上 js-beautify 的配置都可以适用。
 
 ## Features
 <img src="https://raw.githubusercontent.com/win7killer/vue-format/master/images/command.gif" alt="command" width=600/>
