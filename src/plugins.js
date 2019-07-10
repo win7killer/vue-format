@@ -4,12 +4,22 @@
  * @param {Number} breakLimitNum 多余这个数量的属性，才会断行
  */
 
-function breakTagAttr(str = '', breakLimitNum = 1, opt = {indentSize: 4, attrEndWithGt: true, tempConf: {}}) {
+function breakTagAttr(str = '', breakLimitNum = 1, opt = {
+    indentSize: 4,
+    attrEndWithGt: true,
+    tempConf: {}
+}) {
     if (breakLimitNum === -1) {
         return str;
     }
-    let { indentSize, attrEndWithGt, tempConf } = opt;
-    let { unBreakAttrList } = tempConf;
+    let {
+        indentSize,
+        attrEndWithGt,
+        tempConf
+    } = opt;
+    let {
+        unBreakAttrList
+    } = tempConf;
     let padIndent = ' '.repeat(indentSize);
     const TAG_REG = /[\n\r\t]*(\s*)\<[A-z\-\_0-9]+/;
     const TAG_END_REG = /\s*(>|\/>)/;
@@ -34,7 +44,7 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {indentSize: 4, attrEnd
                 continue;
             }
             // console.log(tagContent + '\n\n');
-            // 匹配 tagContent 的attr
+            // 匹配 tagContent 的 attr
             let matchRes = tagContent.match(ATTR_REG);
             // matchRes 处理
             // console.log(matchRes);
@@ -49,7 +59,6 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {indentSize: 4, attrEnd
                 str = str.replace(tagContent, newStr);
             }
         } else {
-            // console.log('stop');
             loop = false;
         }
     }

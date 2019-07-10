@@ -106,7 +106,9 @@ let methods = {
                 str = breakTagAttr(str, +this.vueFormatConf.break_attr_limit, {
                     indentSize: +this.jsBeautifyConf.indent_size,
                     attrEndWithGt: this.vueFormatConf.attr_end_with_gt,
-                    tempConf: Object.assign(tempConf, {unBreakAttrList: htmlUnFormat })
+                    tempConf: Object.assign(tempConf, {
+                        unBreakAttrList: htmlUnFormat
+                    })
                 });
             }
         }

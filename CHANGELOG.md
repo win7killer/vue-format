@@ -68,3 +68,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - fix[issue#18](https://github.com/win7killer/vue-format/issues/18)
 - 修复 package-lock.json 的安全警报
 - 读取 js-beautify 中的 inline 标签 list，匹配的 tag 将不会进行 attrs 换行
+
+### 0.1.8
+- 优化，减小项目文件体积[小很多]
+- 部分细微 bug fix，优化
