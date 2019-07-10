@@ -9,3 +9,9 @@ README_EN.md
 .git
 .github
 todo.md
+images/*.gif
+node_modules/**/test
+node_modules/**/example
+node_modules/**/examples
+
+
