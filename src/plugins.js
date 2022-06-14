@@ -50,8 +50,14 @@ function breakTagAttr(str = '', breakLimitNum = 1, opt = {
             // console.log(matchRes);
             if (matchRes.length > breakLimitNum) { // 一个属性强制断行，或者多属性
                 // 每个 attr 先 trim,然后加换行，空格
+                let index=0;
                 let newStr = tagContent.replace(ATTR_REG, (match, $1) => {
-                    return '\n' + indent + padIndent + $1.trim();
+                    index++;
+                    if(index % breakLimitNum == 0) {
+                        return '\n' + indent + padIndent + $1.trim();
+                    } else {
+                        return ' ' + $1.trim(); 
+                    }
                 });
                 // tag 结束括号换行
                 newStr = attrEndWithGt ? newStr : newStr.replace(TAG_CLOSE_REG, '\n' + indent + '$1');

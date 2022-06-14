@@ -1,6 +1,6 @@
 module.exports = {
     "html_indent_root": false,
-    "break_attr_limit": -1,
+    "break_attr_limit": 5,
     "attr_end_with_gt": true,
     "format_need": ["html", "js", "css"],
     "js-beautify": {
