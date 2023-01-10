@@ -131,12 +131,13 @@ let methods = {
     beautyJs(text) {
         let scoped = /<script[^>]*\s+scoped/.test(text) ? ' scoped' : '';
         let lang = this.getLang(text);
+        let setup = text.includes("setup") ? ' setup' : '';
         let str = text;
         text = text.replace(/<script[^>]*>([\w\W]*)<\/script>/, '$1');
         if (text.trim()) {
             let tempConf = Object.assign({}, this.jsBeautifyConf, this.jsBeautifyConf.js);
             str = beautify.js(text, tempConf);
-            return `<script${lang}${scoped}>\n${str}\n</script>`;
+            return `<script${lang}${scoped}${setup}>\n${str}\n</script>`;
         } else {
             return str;
         }
