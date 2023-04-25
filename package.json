@@ -2,7 +2,7 @@
     "name": "vue-format",
     "displayName": "vue-format",
     "description": "A beautify extension for .vue file",
-    "version": "0.1.8",
+    "version": "0.1.10",
     "publisher": "febean",
     "keyword": "vue vscode format js-beautify extension",
     "engines": {
@@ -41,7 +41,7 @@
                 },
                 "vue-format.break_attr_limit": {
                     "type": "number",
-                    "default": -1,
+                    "default": 5,
                     "description": "Break attributes when tag's attributes.length > this number, no break when -1. (tag 的 attrs 大于该数值时，强制 attrs 换行，-1时不换行)"
                 },
                 "vue-format.attr_end_with_gt": {
