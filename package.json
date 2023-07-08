@@ -110,7 +110,7 @@
         "@types/node": "^7.0.43",
         "eslint": "^4.11.0",
         "typescript": "^2.6.1",
-        "vscode": "^1.1.35"
+        "vscode": "^1.1.37"
     },
     "dependencies": {
         "js-beautify": "^1.10.0",
